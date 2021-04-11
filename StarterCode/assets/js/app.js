@@ -7,7 +7,7 @@ var width = parseInt(d3.select("#scatter").style("width"));
 
 // Designate the height & margins
 var height = width - width / 3.9;
-var margins = 20;
+var margin = 20;
 
 // Spacing for Placing Words
 var labelArea = 110;
@@ -29,7 +29,8 @@ var cicrRadius ;
 function crGet(){
     if (width <= 530){
         circRadius = 5;
-    } else {
+    } 
+    else {
         circRadius = 10;
     }
 }
@@ -40,7 +41,8 @@ crGet();
 svg.append("g").attr("class","xText");
 
 // xText will allow us to select group without excess code
-var xText = d3.select("xText");
+var xText = d3.select(".xText");
+
 function xTextRefresh(){
     xText.attr(
         "transform",
@@ -51,3 +53,5 @@ function xTextRefresh(){
         ")"
     )
 }
+
+xTextRefresh()
