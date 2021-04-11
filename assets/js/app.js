@@ -121,3 +121,43 @@ yText
     .attr("data-axix","y")
     .attr("class","aText inactive y")
     .text("lack of Healthcare (%)")   
+
+// Import csv file for data
+
+d3.csv("assets/data/data.csv").then(function(data){
+    // console.log(data);
+})
+
+// visualize it
+function visualize(data){
+    var curX = "poverty";
+    var curY = "obesity";
+
+    var xMin;
+    var xMax;
+    var yMin;
+    var yMax;
+
+    var toolTip = d3
+        .tip()
+        .attr("class","d3-tip")
+        .offset([40,-60])
+        .html(function(d){
+            var theX;
+            var theState = `<div>${d.state}</div>`;
+            var theY = `<div>${curY}: ${d[curY]}</div>`
+
+            if (curX === "poverty"){
+                theX = `<div>${curX}: ${d[curX]}</div>`
+            }
+            else {
+                theX = `<div>${curX}: ${parseFloat(d[curX]).toLocaleString("en")}</div>`
+            }
+
+            return theState + theX + theY;
+            
+        })
+    
+    svg.call(toolTip);
+
+    }
