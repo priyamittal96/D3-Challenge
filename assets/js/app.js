@@ -145,10 +145,10 @@ function visualize(data){
         .html(function(d){
             var theX;
             var theState = `<div>${d.state}</div>`;
-            var theY = `<div>${curY}: ${d[curY]}</div>`
+            var theY = `<div>${curY}: ${d[curY]}%</div>`
 
             if (curX === "poverty"){
-                theX = `<div>${curX}: ${d[curX]}</div>`
+                theX = `<div>${curX}: ${d[curX]}%</div>`
             }
             else {
                 theX = `<div>${curX}: ${parseFloat(d[curX]).toLocaleString("en")}</div>`
@@ -168,7 +168,7 @@ function visualize(data){
         })
 
         xMax = d3.max(data,function(d){
-            return parseFloat(d[curX]) * 1.10;
+            return parseFloat(d[curX]) * 1.10
         })
     }
 
@@ -184,5 +184,59 @@ function visualize(data){
 
     // change classes and appearance of label
 
+    function labelChange(axis, clickedText){
+        d3.selectAll(".aText")
+        .filter("." + axis)
+        .filter(".active")
+        .classed("actve",false)
+        .classed("inactive", false);
 
+        clickedText.classed("inactive",false).classed("active",true);
     }
+
+    // grab the min and max values
+    xMinMax()
+    yMinMax();
+
+    var xScale = d3
+        .scaleLinear()
+        .domain([xMin,xMax])
+        .range([margin + labelArea, width - margin])
+
+    var yScale = d3
+        .scaleLinear()
+        .domain([yMin,yMax])
+        .range([height - margin - labelArea, margin])
+
+    var xAxis = d3.axisBottom(xScale);
+    var yAxis = d3.axisLeft(yScale);
+
+    function tickCount(){
+        if(width <= 500){
+            xAxis.ticks(5);
+            yAxis.ticks(5);
+        }
+        else {
+            xAxis.ticks(10);
+            yAxis.ticks(10);
+        }
+    }
+    
+    tickCount();
+
+    svg
+        .append("g")
+        .call(xAxis)
+        .attr("class","xAxis") 
+        .attr("transform",`translate(0, ${height - margin - labelArea})`)
+
+    svg
+        .append("g")
+        .call(yAxis)
+        .attr("class","yAxis")
+        .attr("transform",`translate(${margin + labelArea},0)`)
+
+
+    
+
+}
