@@ -103,7 +103,7 @@ yText
     .attr("y", -26)
     .attr("data-name","obesity")
     .attr("data-axix","y")
-    .attr("class","aText active y")
+    .attr("class","aText inactive y")
     .text("Obese (%)")
 
 yText
@@ -119,8 +119,8 @@ yText
     .attr("y", 26)
     .attr("data-name","healthcare")
     .attr("data-axix","y")
-    .attr("class","aText inactive y")
-    .text("lack of Healthcare (%)")   
+    .attr("class","aText active y")
+    .text("Lack of Healthcare (%)")   
 
 // Import csv file for data
 
@@ -132,7 +132,7 @@ d3.csv("assets/data/data.csv").then(function(data){
 // visualize it
 function visualize(data){
     var curX = "poverty";
-    var curY = "obesity";
+    var curY = "healthcare";
 
     var xMin;
     var xMax;
@@ -280,4 +280,5 @@ function visualize(data){
             toolTip.hide(d)
             d3.select(`.${d.abbr}`).style("stroke","#e3e3e3")
         })
+
 } 
