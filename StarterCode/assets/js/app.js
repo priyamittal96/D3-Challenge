@@ -55,3 +55,29 @@ function xTextRefresh(){
 }
 
 xTextRefresh()
+
+// xAxis Labels 
+xText
+    .append("text")
+    .attr("y", -26)
+    .attr("data-name","poverty")
+    .attr("data-axix","x")
+    .attr("class","aText active x")
+    .text("In Poverty (%)")
+
+xText
+    .append("text")
+    .attr("y", 0)
+    .attr("data-name","age")
+    .attr("data-axix","x")
+    .attr("class","aText inactive x")
+    .text("Age (Median)")   
+
+xText
+    .append("text")
+    .attr("y", 26)
+    .attr("data-name","income")
+    .attr("data-axix","x")
+    .attr("class","aText inactive x")
+    .text("Household Income (Median)")   
+
