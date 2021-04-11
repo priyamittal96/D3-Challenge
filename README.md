@@ -8,6 +8,4 @@ The data set included with the assignment is based on 2014 ACS 1-year estimates 
 
 # How to Use
 
-Clone the repo and through a local serve to properly view the data.
-
-From there please select the axis variable you would like to view in the browser. 
+Clone the repo and through a local server to properly view the data in your browser. 
