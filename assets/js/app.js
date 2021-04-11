@@ -126,6 +126,7 @@ yText
 
 d3.csv("assets/data/data.csv").then(function(data){
     // console.log(data);
+    visualize(data);
 })
 
 // visualize it
@@ -236,7 +237,18 @@ function visualize(data){
         .attr("class","yAxis")
         .attr("transform",`translate(${margin + labelArea},0)`)
 
-
+    var theCircles = svg.selectAll("g theCircles").data(data).enter()
     
+    theCircles.append("circle")
+        .attr("cx",function(d){
+            return xScale(d[curX]);
+        })
+        .attr("cy",function(d){
+            return yScale(d[curY]);
+        })
+        .attr("r",circRadius)
+        .attr("class",function(d){
+            return `stateCircle ${d.abbr}`
+        })
 
-}
+} 
