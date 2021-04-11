@@ -93,7 +93,7 @@ function yTextRefresh(){
     yText.attr(
         "transform",
        `translate(${leftTextX},${leftTextY}) rotate(-90)`
-    )
+    ) 
 }
 
 yTextRefresh( )
