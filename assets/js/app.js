@@ -160,4 +160,29 @@ function visualize(data){
     
     svg.call(toolTip);
 
+    // part 2
+
+    function xMinMax(){
+        xMin = d3.min(data,function(d){
+            return parseFloat(d[curX]) * 0.90;
+        })
+
+        xMax = d3.max(data,function(d){
+            return parseFloat(d[curX]) * 1.10;
+        })
+    }
+
+    function yMinMax(){
+        yMin = d3.min(data,function(d){
+            return parseFloat(d[curY]) * 0.90;
+        })
+
+        yMax = d3.max(data,function(d){
+            return parseFloat(d[curY]) * 1.10;
+        })
+    }
+
+    // change classes and appearance of label
+
+
     }
