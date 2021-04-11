@@ -81,3 +81,43 @@ xText
     .attr("class","aText inactive x")
     .text("Household Income (Median)")   
 
+// yText & yAxis Labels 
+var leftTextX = margin + tPadLeft;
+var leftTextY = (height + labelArea) / 2 - labelArea;
+
+svg.append("g").attr("class","yText");
+
+var yText = d3.select(".yText");
+
+function yTextRefresh(){
+    yText.attr(
+        "transform",
+       `translate(${leftTextX},${leftTextY}) rotate(-90)`
+    )
+}
+
+yTextRefresh( )
+
+yText
+    .append("text")
+    .attr("y", -26)
+    .attr("data-name","obesity")
+    .attr("data-axix","y")
+    .attr("class","aText active y")
+    .text("Obese (%)")
+
+yText
+    .append("text")
+    .attr("y", 0)
+    .attr("data-name","smokes")
+    .attr("data-axix","y")
+    .attr("class","aText inactive y")
+    .text("Smokes (%)")   
+
+yText
+    .append("text")
+    .attr("y", 26)
+    .attr("data-name","healthcare")
+    .attr("data-axix","y")
+    .attr("class","aText inactive y")
+    .text("lack of Healthcare (%)")   
