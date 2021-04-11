@@ -249,6 +249,35 @@ function visualize(data){
         .attr("r",circRadius)
         .attr("class",function(d){
             return `stateCircle ${d.abbr}`
+        }) 
+        .on("mouseover",function(d){
+            toolTip.show(d,this);
+            d3.select(this).style("stroke","#323232")
         })
-
+        .on("mouseout",function(d){
+            toolTip.hide(d)
+            d3.select(this).style("stroke","e3e3e3")
+        })
+    
+    theCircles 
+        .append("text")
+        .text(function(d){
+            return d.abbr
+        })
+        .attr("dx",function(d){
+           return xScale(d[curX]) - (circRadius / 7.5)
+        })
+        .attr("dy",function(d){
+            return yScale(d[curY]) + (circRadius / 2.5)
+        })
+        .attr("font-size", circRadius)
+        .attr("class","stateText")
+        .on("mouseover",function(d){
+            toolTip.show(d)
+            d3.select(`.${d.abbr}`).style("stroke","#323232");
+        })
+        .on("mouseout",function(d){
+            toolTip.hide(d)
+            d3.select(`.${d.abbr}`).style("stroke","#e3e3e3")
+        })
 } 
